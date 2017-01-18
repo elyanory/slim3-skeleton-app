@@ -1,0 +1,24 @@
+{
+    "name": "twandiz/slim3-skeleton-app",
+    "description": "Test for a slim3 app",
+    "license": "BSD-3-Clause",
+    "type": "project",
+    "keywords": ["slim"],
+    "authors": [
+        {
+            "name": "Antoine FRANCE",
+            "email": "afrance@clever-age.com",
+            "homepage": "http://antoinefrance.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/src"
+        }
+    },
+    "require": {
+        "slim/slim": "^3.0",
+        "slim/twig-view": "^2.0",
+        "slim/flash": "^0.1.0"
+    }
+}
