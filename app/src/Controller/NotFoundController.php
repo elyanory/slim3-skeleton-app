@@ -8,18 +8,32 @@ use Slim\Views\Twig;
 
 class NotFoundController extends NotFound {
 
+    /**
+     * @var Twig
+     */
     private $view;
 
-    public function __construct(Twig $view) {
+    /**
+     * NotFoundController constructor.
+     *
+     * @param Twig $view
+     */
+    public function __construct(Twig $view)
+    {
         $this->view = $view;
     }
 
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     *
+     * @return static
+     */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response)
     {
         parent::__invoke($request, $response);
-
+        
         $this->view->render($response, 'errors/404.twig');
-
         return $response->withStatus(404);
     }
 }

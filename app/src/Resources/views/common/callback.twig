@@ -1,0 +1,20 @@
+<h2>Callback</h2>
+
+<form action="{{ path_for('callback') }}" name="callback-form" method="post">
+    <p>
+        <label for="phone">Name</label>
+        <input type="text" id="callback-name" name="name">
+    </p>
+
+    <p>
+        <label for="phone">Phone</label>
+        <input type="text" id="callback-phone" name="phone">
+    </p>
+
+    <p>
+        <input type="hidden" name="csrf_name" value="{{ name }}">
+        <input type="hidden" name="csrf_value" value="{{ value }}">
+        <input type="hidden" name="callback-form" value="{{ base_url() }}">
+        <button type="submit">Callback</button>
+    </p>
+</form>

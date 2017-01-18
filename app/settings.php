@@ -2,7 +2,7 @@
 return [
     'settings' => [
         'determineRouteBeforeAppMiddleware' => false,
-        'displayErrorDetails' => true,
+        'displayErrorDetails' => false,
         'view' => [
             'template_path' => __DIR__ . '/src/Resources/views/',
             'twig' => [

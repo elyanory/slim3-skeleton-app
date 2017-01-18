@@ -12,7 +12,7 @@
         modi neque pariatur sequi sit tempora.
     </p>
 
-    <form action="{{ path_for('contact') }}">
+    <form action="{{ path_for('contact') }}" name="contact-form" method="post">
         <p>
             <label for="firstname">Firstname</label>
             <input type="text" id="contact-firstname" name="firstname" />
@@ -29,6 +29,8 @@
         </p>
 
         <p>
+            <input type="hidden" name="csrf_name" value="{{ name }}">
+            <input type="hidden" name="csrf_value" value="{{ value }}">
             <button type="submit">Envoyer</button>
         </p>
     </form>

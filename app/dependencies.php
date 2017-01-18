@@ -25,13 +25,17 @@ $container['notFoundHandler'] = function ($c) {
     });
 };
 
-// TODO : Dynamical container !
 // Homepage
 $container[App\Controller\HomeController::class] = function ($c) {
-    return new App\Controller\HomeController($c->get('view'));
+    return new App\Controller\HomeController($c->get('view'), $c->get('flash'));
 };
 
 // Contact
 $container[App\Controller\ContactController::class] = function ($c) {
-    return new App\Controller\ContactController($c->get('view'));
+    return new App\Controller\ContactController($c->get('view'), $c->get('flash'));
+};
+
+// Callback
+$container[App\Controller\CallbackController::class] = function ($c) {
+    return new App\Controller\CallbackController($c->get('view'), $c->get('flash'));
 };

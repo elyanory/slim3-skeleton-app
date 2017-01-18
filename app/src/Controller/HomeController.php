@@ -6,9 +6,17 @@ use Slim\Http\Response;
 
 class HomeController extends AbstractController
 {
-    public function __invoke(Request $request, Response $response, $args)
+    /**
+     * @param Request $request
+     * @param Response $response
+     *
+     * @return Response
+     */
+    public function __invoke(Request $request, Response $response)
     {
-        $this->view->render($response, 'homepage/home.twig');
-        return $response;
+        return $this->view->render($response, 'homepage/home.twig', [
+            'name' => $request->getAttribute('csrf_name'),
+            'value' => $request->getAttribute('csrf_value')
+        ]);
     }
 }
