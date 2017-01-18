@@ -11,4 +11,9 @@ class ContactController extends AbstractController
         $this->view->render($response, 'contact/contact.twig');
         return $response;
     }
+
+    public function contact(Request $request, Response $response, $args)
+    {
+
+    }
 }

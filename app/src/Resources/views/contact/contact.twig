@@ -5,4 +5,31 @@
 
 {% block body %}
     <h1>Contact</h1>
+
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti eligendi explicabo nostrum
+        nulla placeat quia quibusdam repudiandae. Animi consectetur dolorem excepturi fuga, hic, ipsa
+        modi neque pariatur sequi sit tempora.
+    </p>
+
+    <form action="{{ path_for('contact') }}">
+        <p>
+            <label for="firstname">Firstname</label>
+            <input type="text" id="contact-firstname" name="firstname" />
+        </p>
+
+        <p>
+            <label for="lastname">Lastname</label>
+            <input type="text" id="contact-lastname" name="lastname" />
+        </p>
+
+        <p>
+            <label for="message">Message</label>
+            <textarea id="contact-message" name="message" cols="30" rows="10"></textarea>
+        </p>
+
+        <p>
+            <button type="submit">Envoyer</button>
+        </p>
+    </form>
 {% endblock %}

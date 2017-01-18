@@ -25,6 +25,7 @@ $container['notFoundHandler'] = function ($c) {
     });
 };
 
+// TODO : Dynamical container !
 // Homepage
 $container[App\Controller\HomeController::class] = function ($c) {
     return new App\Controller\HomeController($c->get('view'));
