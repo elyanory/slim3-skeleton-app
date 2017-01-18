@@ -24,6 +24,12 @@ $container['notFoundHandler'] = function ($c) {
             ->withStatus(404);
     });
 };
+$container['notAllowedHandler'] = function ($c) {
+    return new \App\Controller\NotFoundController($c->get('view'), function ($request, $response) use ($c) {
+        return $c['response']
+            ->withStatus(404);
+    });
+};
 
 // Homepage
 $container[App\Controller\HomeController::class] = function ($c) {
