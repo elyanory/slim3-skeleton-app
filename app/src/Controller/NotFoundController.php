@@ -6,6 +6,11 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slim\Handlers\NotFound;
 use Slim\Views\Twig;
 
+/**
+ * NotFoundController class
+ *
+ * Override the NotFoundHandler of Slim.
+ */
 class NotFoundController extends NotFound {
 
     /**

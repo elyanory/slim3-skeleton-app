@@ -1,4 +1,17 @@
 <?php
+/**
+ * Settings
+ *
+ * App settings
+ *
+ * PHP Version 5.6
+ *
+ * @category Settings
+ * @package  App
+ * @author   afrance <france.antoine@gmail.com>
+ * @license  http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @link     null
+ */
 return [
     'settings' => [
         'determineRouteBeforeAppMiddleware' => false,
@@ -11,5 +24,7 @@ return [
                 'auto_reload' => true,
             ],
         ],
+        'from' => 'email@email.fr',
+        'to' => 'email@email.fr',
     ],
 ];

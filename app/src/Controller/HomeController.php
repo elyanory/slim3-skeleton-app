@@ -4,6 +4,11 @@ namespace App\Controller;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
+/**
+ * HomeController class
+ *
+ * Controller of your homepage.
+ */
 class HomeController extends AbstractController
 {
     /**

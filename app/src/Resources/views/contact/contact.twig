@@ -12,14 +12,15 @@
         modi neque pariatur sequi sit tempora.
     </p>
 
+    {% include 'common/flash.twig' %}
     <form action="{{ path_for('contact') }}" name="contact-form" method="post">
         <p>
-            <label for="firstname">Firstname</label>
+            <label for="firstname">Nom</label>
             <input type="text" id="contact-firstname" name="firstname" />
         </p>
 
         <p>
-            <label for="lastname">Lastname</label>
+            <label for="lastname">Prénom</label>
             <input type="text" id="contact-lastname" name="lastname" />
         </p>
 
@@ -34,4 +35,6 @@
             <button type="submit">Envoyer</button>
         </p>
     </form>
+
+    {% include 'common/callback.twig' %}
 {% endblock %}

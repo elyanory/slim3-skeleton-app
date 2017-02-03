@@ -1,0 +1,19 @@
+{% if flash.getMessage('error') %}
+<div class="alert alert-error">
+    <ul>
+    {% for error in flash.getMessage('error') %}
+        <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% if flash.getMessage('success') %}
+    <div class="alert alert-success">
+        <ul>
+    {% for success in flash.getMessage('success') %}
+        <li>{{ success }}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}

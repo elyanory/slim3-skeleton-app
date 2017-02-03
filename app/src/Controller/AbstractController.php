@@ -7,8 +7,15 @@ use Slim\Http\Response;
 use Slim\Views\Twig as Twig;
 use Slim\Flash\Messages as Flash;
 
+/**
+ * Class AbstractController
+ * @package App\Controller
+ */
 class AbstractController
 {
+    /** @var array */
+    protected $settings;
+
     /** @var Twig */
     protected $view;
 
@@ -23,8 +30,9 @@ class AbstractController
      * @param Twig $view
      * @param Flash $flash
      */
-    public function __construct(Twig $view, Flash $flash)
+    public function __construct($settings, Twig $view, Flash $flash)
     {
+        $this->settings = $settings;
         $this->view = $view;
         $this->flash = $flash;
     }
@@ -72,5 +80,21 @@ class AbstractController
             'methods' => $route->getMethods(),
             'arguments' => $route->getArguments(),
         ];
+    }
+
+    /**
+     * @param $to
+     * @param $subject
+     * @param $message
+     *
+     * @return bool
+     */
+    public function sendMail($to, $subject, $message)
+    {
+        $headers = "From: " . $this->settings['from'] . "\r\n".
+            "MIME-Version: 1.0" . "\r\n" .
+            "Content-type: text/html; charset=UTF-8" . "\r\n";
+
+        return mail($to, $subject, $message, $headers);
     }
 }

@@ -1,9 +1,15 @@
 <?php
 namespace App\Controller;
 
+use App\Validator\StringValidator;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
+/**
+ * ContactController class
+ *
+ * Display contact page.
+ */
 class ContactController extends AbstractController
 {
     /**
@@ -34,10 +40,44 @@ class ContactController extends AbstractController
             return $this->redirect($response, 'contact');
         }
 
-        $this->flash->addMessage('success', 'Good');
         $data = $request->getParams();
 
         // Treatment
+        $errors = [];
+        if (!isset($data['firstname']) ||
+            (isset($data['firstname']) && !StringValidator::validate($data['firstname']))
+        ) {
+            $errors[] = 'Nom incorrect.';
+        }
+
+        if (!isset($data['lastname']) ||
+            (isset($data['lastname']) && !StringValidator::validate($data['lastname']))
+        ) {
+            $errors[] = 'Prénom incorrect.';
+        }
+
+        if (0 == count($errors)) {
+            $message = "Un nouveau visiteur essaye de vous contacter :
+<ul>
+    <li>Nom : " . $data['firstname']  . "</li>
+    <li>Prénom : " . $data['lastname']  . "</li>
+    <li>Email : " . $data['email']  . "</li>
+    <li>Message : " . $data['message']  . "</li>
+</ul>
+";
+
+            $this->sendMail(
+                $this->settings['to'],
+                'Nouveau contact',
+                $message
+            );
+
+            $this->flash->addMessage('success', "Votre demande de contact a bien été envoyée, merci.");
+        } else {
+            foreach ($errors as $error) {
+                $this->flash->addMessage('error', $error);
+            }
+        }
 
         return $this->redirect($response, 'contact');
     }
